@@ -42,4 +42,14 @@ public class CustomerService {
         return existingCustomer;
     }
 
+    @Transactional
+    public void deleteCustomer(Long id) {
+        Customer customer = findCustomerById(id);
+        if (customer != null) {
+            customerRepository.delete(customer);
+        } else {
+            throw new IllegalArgumentException("Customer with id " + id + " not found.");
+        }
+    }
+
 }

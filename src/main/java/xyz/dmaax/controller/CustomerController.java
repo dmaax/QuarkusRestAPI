@@ -48,4 +48,11 @@ public class CustomerController {
         return Response.ok(updatedCustomer).build();
     }
 
+    @DELETE
+    @Path("/{id}")
+    public Response deleteCustomer(@PathParam("id") Long id) {
+        customerService.deleteCustomer(id);
+        return Response.noContent().build();
+    }
+
 }
